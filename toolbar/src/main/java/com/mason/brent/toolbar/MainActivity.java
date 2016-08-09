@@ -31,6 +31,7 @@ import com.yolanda.nohttp.rest.Response;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
@@ -146,20 +147,31 @@ public class MainActivity extends AppCompatActivity implements OnResponseListene
                 // Get access to the root:
 
 
-                ByteArrayInputStream bais = new ByteArrayInputStream(buf.array());
+                ByteArrayInputStream bais = new ByteArrayInputStream(buf.array(), builder.dataBuffer().position(), builder.offset());
+//                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//                int len = 0;
+//
+//                try {
+//                    while ((len = bais.read()) != -1) {
+//                        baos.write(len);
+//                    } // close while
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
 
-/*                Request<String> request = NoHttp.createStringRequest("http://192.168.199.71:4477/test", RequestMethod.POST);
+//                byte[] b1 = baos.toByteArray();
+
+
+
+
+                Request<String> request = NoHttp.createStringRequest("http://192.168.199.73:4477/test", RequestMethod.POST);
                 request.setDefineRequestBody(bais, "BIN");
 
-                queue.add(0, request, MainActivity.this);*/
+                queue.add(0, request, MainActivity.this);
 
-                byte[] byt = new byte[bais.available()];
-                try {
-                    bais.read(byt);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                User mUser = User.getRootAsUser(ByteBuffer.wrap(byt));
+                User mUser = User.getRootAsUser(buf);
+//                User mUser = User.getRootAsUser(ByteBuffer.wrap(b1));
+
                 Toast.makeText(MainActivity.this, mUser.login(), Toast.LENGTH_LONG).show();
 
 //                CallServer.getRequestInstance().add(this, 0, request, this, false, true);
