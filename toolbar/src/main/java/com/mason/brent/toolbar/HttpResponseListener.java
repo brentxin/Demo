@@ -132,33 +132,38 @@ public class HttpResponseListener<T> implements OnResponseListener<T> {
         }
     }
 
+    @Override
+    public void onFailed(int i, Response<T> response) {
+
+    }
+
     /**
      * 失败回调.
      */
-    @Override
-    public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
-//        if (exception instanceof NetworkError) {// 网络不好
-//            Snackbar.show(mActivity, R.string.error_please_check_network);
-//        } else if (exception instanceof TimeoutError) {// 请求超时
-//            Snackbar.show(mActivity, R.string.error_timeout);
-//        } else if (exception instanceof UnKnownHostError) {// 找不到服务器
-//            Snackbar.show(mActivity, R.string.error_not_found_server);
-//        } else if (exception instanceof URLError) {// URL是错的
-//            Snackbar.show(mActivity, R.string.error_url_error);
-//        } else if (exception instanceof NotFoundCacheError) {
-//            // 这个异常只会在仅仅查找缓存时没有找到缓存时返回
-//            Snackbar.show(mActivity, R.string.error_not_found_cache);
-//        } else if (exception instanceof ProtocolException) {
-//            Snackbar.show(mActivity, R.string.error_system_unsupport_method);
-//        } else if (exception instanceof ParseError) {
-//            Snackbar.show(mActivity, R.string.error_parse_data_error);
-//        } else {
-//            Snackbar.show(mActivity, R.string.error_unknow);
-//        }
-        Logger.e("错误：" + exception.getMessage());
-        if (callback != null)
-            callback.onFailed(what, url, tag, exception, responseCode, networkMillis);
-    }
+//    @Override
+//    public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
+////        if (exception instanceof NetworkError) {// 网络不好
+////            Snackbar.show(mActivity, R.string.error_please_check_network);
+////        } else if (exception instanceof TimeoutError) {// 请求超时
+////            Snackbar.show(mActivity, R.string.error_timeout);
+////        } else if (exception instanceof UnKnownHostError) {// 找不到服务器
+////            Snackbar.show(mActivity, R.string.error_not_found_server);
+////        } else if (exception instanceof URLError) {// URL是错的
+////            Snackbar.show(mActivity, R.string.error_url_error);
+////        } else if (exception instanceof NotFoundCacheError) {
+////            // 这个异常只会在仅仅查找缓存时没有找到缓存时返回
+////            Snackbar.show(mActivity, R.string.error_not_found_cache);
+////        } else if (exception instanceof ProtocolException) {
+////            Snackbar.show(mActivity, R.string.error_system_unsupport_method);
+////        } else if (exception instanceof ParseError) {
+////            Snackbar.show(mActivity, R.string.error_parse_data_error);
+////        } else {
+////            Snackbar.show(mActivity, R.string.error_unknow);
+////        }
+//        Logger.e("错误：" + exception.getMessage());
+//        if (callback != null)
+//            callback.onFailed(what, url, tag, exception, responseCode, networkMillis);
+//    }
 
 }
 

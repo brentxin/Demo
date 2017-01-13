@@ -22,7 +22,6 @@ import com.yanzhenjie.andserver.AndServer;
 import com.yanzhenjie.andserver.AndServerBuild;
 import com.yolanda.nohttp.NoHttp;
 import com.yolanda.nohttp.RequestMethod;
-import com.yolanda.nohttp.rest.HttpResponse;
 import com.yolanda.nohttp.rest.OnResponseListener;
 import com.yolanda.nohttp.rest.Request;
 import com.yolanda.nohttp.rest.RequestQueue;
@@ -214,9 +213,10 @@ public class MainActivity extends AppCompatActivity implements OnResponseListene
     }
 
     @Override
-    public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
+    public void onFailed(int i, Response response) {
 
     }
+
 
     @Override
     public void onFinish(int what) {
